@@ -1,0 +1,25 @@
+{
+  "name": "calentrak-server",
+  "version": "1.0.0",
+  "description": "Version one of calentrak, Red Badge Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon"
+  },
+  "author": "David Thomas",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
