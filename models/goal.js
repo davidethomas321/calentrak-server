@@ -25,6 +25,10 @@ const Goal = db.define('goal', {
         type: DataTypes.BOOLEAN,
         allowNull: true,
     },
+    goalNotes: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     ownerId: {
         type: DataTypes.UUID,
         allowNull: false

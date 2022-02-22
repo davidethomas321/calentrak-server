@@ -21,6 +21,14 @@ const Expense = db.define('expense', {
         type: DataTypes.DATE,
         allowNull: false,
     },
+    isPaid: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+    },
+    expenseNotes: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     ownerId: {
         type: DataTypes.UUID,
         allowNull: false

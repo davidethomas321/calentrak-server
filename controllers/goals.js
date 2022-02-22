@@ -13,6 +13,7 @@ router.post("/addGoal", validateJWT, async (req, res) => {
         description:description,
         writeDate:writeDate,
         isDone: false,
+        goalNotes:'',
         ownerId: idNumber
     }
     
@@ -60,9 +61,25 @@ router.put("/updateGoal/:id", validateJWT, async (req, res)=> {
     }))
 });
 
+//UPDATE GOAL isDone: COMPLETE
+router.put("/updateGoalisDone/:id", validateJWT, async (req, res)=> {
+    const { isDone } = req.body.goal;
+
+    GoalModel.update({ 
+        isDone:isDone
+    }, {
+        where: {
+            idNumber: req.params.id
+        }
+    })
+    .then(updateGoal => res.status(200).json(updateGoal))
+    .catch(err => res.status(500).json({
+        error: err
+    }))
+});
+
 
 //GET SINGLE DAY'S GOALS: COMPLETE, DATE MUST BE IN YYYY-MM-DD FORMAT
-//How to get the client to auto-populate today's date?
 router.get("/gDaySelect/:writeDate", validateJWT, async (req, res) => {
     const { idNumber } = req.user;
     const { writeDate } = req.params;

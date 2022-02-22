@@ -12,6 +12,8 @@ router.post("/addExpense", validateJWT, async (req, res) => {
         expense:expense,
         amount:amount,
         writeDate:writeDate,
+        isPaid:false,
+        expenseNotes:'',
         ownerId: idNumber
     }
     
@@ -58,6 +60,24 @@ router.put("/updateExpense/:id", validateJWT, async (req, res)=> {
         error: err
     }))
 });
+
+//UPDATE GOAL isDone: COMPLETE
+router.put("/updateExpenseIsPaid/:id", validateJWT, async (req, res)=> {
+    const { isPaid } = req.body.expense;
+
+    ExpenseModel.update({ 
+        isPaid:isPaid
+    }, {
+        where: {
+            idNumber: req.params.id
+        }
+    })
+    .then(updateExpenseIsPaid => res.status(200).json(updateExpenseIsPaid))
+    .catch(err => res.status(500).json({
+        error: err
+    }))
+});
+
 
 
 //GET SINGLE DAY'S EXPENSES: COMPLETE, DATE MUST BE IN YYYY-MM-DD FORMAT
